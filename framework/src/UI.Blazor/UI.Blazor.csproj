@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>CoreBoilerplate.UI.Blazor</RootNamespace>
+    <AssemblyName>CoreBoilerplate.UI.Blazor</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
