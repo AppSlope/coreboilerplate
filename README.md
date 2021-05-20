@@ -4,7 +4,7 @@ Note that this project is still in the design & development phase. `Expected Bet
 
 ## What is coreboilerplate?
 
-`coreboilerplate` is an ASP.NET Core 5.0 Boilerplate Template that helps you create complete web applications by following best code practices and various Clean Architecture principles. Basically, a much easy-to-understand variant of abp.
+`coreboilerplate` is an ASP.NET Core 5.0 Boilerplate Template that helps you create complete web applications by following best code practices and various Clean Architecture principles.
 
 ## Dedicated Documentation
 
