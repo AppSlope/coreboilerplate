@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CoreBoilerplate.Application.Abstractions.DI;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using Scrutor;
 using System;
 using System.Collections.Generic;
 
@@ -8,8 +10,21 @@ namespace CoreBoilerplate.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddVersioning(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructureLayerServices(this IServiceCollection services)
         {
+            services.AddVersioning();
+            services.AddSwaggerDocumentation();
+            services.Scan(scan => scan
+                    .FromCallingAssembly()
+                    .AddClasses(c=>c.AssignableTo(typeof(IApplicationService)))
+        .AsImplementedInterfaces()
+        .WithTransientLifetime());
+
+            return services;
+        }
+        private static IServiceCollection AddVersioning(this IServiceCollection services)
+        {
+            
             return services.AddApiVersioning(config =>
             {
                 config.DefaultApiVersion = new ApiVersion(1, 0);
@@ -17,7 +32,7 @@ namespace CoreBoilerplate.Infrastructure.Extensions
                 config.ReportApiVersions = true;
             });
         }
-        public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
+        private static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
             return services.AddSwaggerGen(c =>
             {
