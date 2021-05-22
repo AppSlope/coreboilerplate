@@ -1,4 +1,5 @@
 ﻿using CoreBoilerplate.Application.Abstractions.DapperContexts;
+using CoreBoilerplate.Application.Abstractions.EFContexts;
 using CoreBoilerplate.Infrastructure.Persistence.EFContexts;
 using Dapper;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace CoreBoilerplate.Infrastructure.Persistence.DapperContexts
     //Read details about this implmentation in the interface cs file.
     public class DapperDbWriteContext : IDapperDbWriteContext
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IApplicationDbContext _context;
 
         public DapperDbWriteContext(ApplicationDbContext context)
         {
