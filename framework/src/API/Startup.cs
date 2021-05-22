@@ -21,26 +21,25 @@ namespace CoreBoilerplate.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Add all Layer Services
-            services.AddPersistence(_configuration);
-
-            services.AddVersioning();
-            services.AddSwaggerDocumentation();
-            services.AddControllers();
-            services.AddRouting(options => options.LowercaseUrls = true);
+            services
+                .AddPersistence(_configuration)
+                .AddVersioning()
+                .AddSwaggerDocumentation()
+                .AddRouting(options => options.LowercaseUrls = true);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseGlobalErrorHandler();
-            app.UseSwaggerDocumentation();
-            app.UseHttpsRedirection();
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app
+                .UseGlobalErrorHandler()
+                .UseSwaggerDocumentation()
+                .UseHttpsRedirection()
+                .UseRouting()
+                .UseAuthorization()
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
         }
     }
 }
