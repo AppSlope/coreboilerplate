@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>CoreBoilerplate.Domain</RootNamespace>
+    <AssemblyName>CoreBoilerplate.Domain</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+</Project>
