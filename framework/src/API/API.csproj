@@ -7,13 +7,15 @@
   <PropertyGroup>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>CoreBoilerplate.API.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Middlewares\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.Persistence\Infrastructure.Persistence.csproj" />

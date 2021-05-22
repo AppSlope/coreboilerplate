@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CoreBoilerplate.Application.Exceptions
 {
-    public class PersistenceException : Exception
+    public class DBContextNullException : Exception
     {
-        public PersistenceException(string? message) : base(message)
+        public DBContextNullException(string? message) : base(message)
         {
         }
     }

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>CoreBoilerplate.UI.Shared</RootNamespace>
+    <AssemblyName>CoreBoilerplate.UI.Shared</AssemblyName>
+  </PropertyGroup>
+
+</Project>

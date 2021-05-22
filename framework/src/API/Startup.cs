@@ -1,3 +1,4 @@
+using CoreBoilerplate.Infrastructure.Extensions;
 using CoreBoilerplate.Infrastructure.Persistence.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,30 +21,22 @@ namespace CoreBoilerplate.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
+            //Add all Layer Services
             services.AddPersistence(_configuration);
+
+            services.AddVersioning();
+            services.AddSwaggerDocumentation();
+            services.AddControllers();
+            services.AddRouting(options => options.LowercaseUrls = true);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
-            }
-
+            app.UseGlobalErrorHandler();
+            app.UseSwaggerDocumentation();
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
