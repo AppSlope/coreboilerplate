@@ -10,9 +10,9 @@ namespace CoreBoilerplate.Application.Abstractions.DapperContexts
     //Due to this, there can be data inconsistencies and you will not be able to rollback transactions.
     //Thus, don't add any Dapper Commands here, Just use this context only to query data from the database.
     //We will have a seperate Dapper Context that deals only with writing to the database against the same sql connection instance that is being used by EFCore's ApplicationDbContext.
-    public interface IDapperDbReadContext
+    public interface IDbReadContext
     {
-#nullable enable
+        #nullable enable
 
         Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object? param = null, IDbTransaction? transaction = null, CancellationToken cancellationToken = default);
 
@@ -20,6 +20,6 @@ namespace CoreBoilerplate.Application.Abstractions.DapperContexts
 
         Task<T> QuerySingleAsync<T>(string sql, object? param = null, IDbTransaction? transaction = null, CancellationToken cancellationToken = default);
 
-#nullable disable
+        #nullable disable
     }
 }

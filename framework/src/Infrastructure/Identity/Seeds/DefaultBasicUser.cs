@@ -1,5 +1,5 @@
-﻿using CoreBoilerplate.Application.Constants;
-using CoreBoilerplate.Application.Enums;
+﻿using CoreBoilerplate.Application.Enums;
+using CoreBoilerplate.Infrastructure.Constants;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;

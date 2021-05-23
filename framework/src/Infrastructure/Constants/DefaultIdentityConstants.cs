@@ -1,4 +1,4 @@
-﻿namespace CoreBoilerplate.Application.Constants
+﻿namespace CoreBoilerplate.Infrastructure.Constants
 {
     public static class DefaultIdentityConstants
     {

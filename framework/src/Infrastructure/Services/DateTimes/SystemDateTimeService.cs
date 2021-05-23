@@ -1,7 +1,7 @@
 ﻿using CoreBoilerplate.Application.Abstractions.DateTimes;
 using System;
 
-namespace CoreBoilerplate.Infrastructure.DateTimes
+namespace CoreBoilerplate.Infrastructure.Services.DateTimes
 {
     public class SystemDateTimeService : IDateTimeService
     {

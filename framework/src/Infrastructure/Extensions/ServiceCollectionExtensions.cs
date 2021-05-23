@@ -1,10 +1,19 @@
-﻿using CoreBoilerplate.Application.Abstractions.DI;
+﻿using CoreBoilerplate.Application.Abstractions.DapperContexts;
+using CoreBoilerplate.Application.Abstractions.DI;
+using CoreBoilerplate.Application.Abstractions.EFContexts;
+using CoreBoilerplate.Application.Exceptions;
 using CoreBoilerplate.Application.Interfaces.Services.Auth;
 using CoreBoilerplate.Application.Interfaces.Services.Users;
 using CoreBoilerplate.Application.Settings;
+using CoreBoilerplate.Infrastructure.Constants;
+using CoreBoilerplate.Infrastructure.Contexts.Dapper;
+using CoreBoilerplate.Infrastructure.Contexts.EFCore;
+using CoreBoilerplate.Infrastructure.Identity;
 using CoreBoilerplate.Infrastructure.Services.Auth;
 using CoreBoilerplate.Infrastructure.Services.Users;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -15,24 +24,30 @@ namespace CoreBoilerplate.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddInfrastructureLayerServices(this IServiceCollection services)
+        
+        public static IServiceCollection AddInfrastructureLayerServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddVersioning();
+            services.AddContexts(configuration);
+            services.ConfigureAppSettings(configuration);
             services.AddSwaggerDocumentation();
             services.AddTransient<ITokenService, TokenService>();
             services.AddTransient<IUserService, UserService>();
-            services.Scan(scan => scan
-                    .FromCallingAssembly()
-                    .AddClasses(c => c.AssignableTo(typeof(IApplicationService)))
-                    .AsImplementedInterfaces()
-                    .WithTransientLifetime());
             return services;
         }
-
-        public static IServiceCollection RegisterInfrastructureSettings(this IServiceCollection services, IConfiguration configuration)
+        private static IServiceCollection AddContexts(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString(PersistenceConstants.DefaultConnectionName)));
+            services.AddIdentity<ExtendedIdentityUser, ExtendedIdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>() ?? throw new DBContextNullException());
+            services.AddScoped<IDbWriteContext, DapperDbWriteContext>();
+            services.AddScoped<IDbReadContext, DapperDbReadContext>();
+            return services;
+        }
+        private static IServiceCollection ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
-            services.Configure<MailSettings>(configuration.GetSection("MailConfiguration"));
+            services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
             return services;
         }
 

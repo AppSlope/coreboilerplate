@@ -1,7 +1,7 @@
 ﻿using CoreBoilerplate.Application.Interfaces.Repositories;
 using CoreBoilerplate.Application.Specifications;
 using CoreBoilerplate.Domain;
-using CoreBoilerplate.Infrastructure.Persistence.EFContexts;
+using CoreBoilerplate.Infrastructure.Contexts.EFCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

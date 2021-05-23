@@ -17,9 +17,9 @@ namespace CoreBoilerplate.API.Controllers
         {
             _tokenService = tokenService;
         }
-
         [HttpPost]
         [AllowAnonymous]
+       
         public async Task<IActionResult> GetTokenAsync(TokenRequest request)
         {
             var token = await _tokenService.GetTokenAsync(request, GenerateIPAddress());

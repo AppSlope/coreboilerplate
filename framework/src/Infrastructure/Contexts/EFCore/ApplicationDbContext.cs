@@ -1,6 +1,6 @@
 ﻿using CoreBoilerplate.Application.Abstractions.EFContexts;
 using CoreBoilerplate.Infrastructure.Identity;
-using CoreBoilerplate.Infrastructure.Persistence.Extensions;
+using CoreBoilerplate.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +8,7 @@ using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CoreBoilerplate.Infrastructure.Persistence.EFContexts
+namespace CoreBoilerplate.Infrastructure.Contexts.EFCore
 {
     //Read details about this implmentation in the interface cs file.
     public class ApplicationDbContext : IdentityDbContext<ExtendedIdentityUser, ExtendedIdentityRole, int>, IApplicationDbContext

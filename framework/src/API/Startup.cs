@@ -1,6 +1,5 @@
 using CoreBoilerplate.Application.Extensions;
 using CoreBoilerplate.Infrastructure.Extensions;
-using CoreBoilerplate.Infrastructure.Persistence.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,30 +9,24 @@ namespace CoreBoilerplate.API
 {
     public class Startup
     {
+        public IConfiguration _configuration { get; }
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
-        }
-
-        public IConfiguration _configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        }        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services
-                .AddPersistenceLayerServices(_configuration)
                 .AddApplicationLayerServices()
-                .RegisterInfrastructureSettings(_configuration)
-                .AddInfrastructureLayerServices()
+                .AddInfrastructureLayerServices(_configuration)
                 .AddRouting(options => options.LowercaseUrls = true);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app
-                .UseGlobalErrorHandler()
-                .UseSwaggerDocumentation()
+                .UseInfrastructureMiddlewares()
                 .UseHttpsRedirection()
                 .UseRouting()
                 .UseAuthorization()

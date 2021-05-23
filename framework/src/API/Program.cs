@@ -1,6 +1,6 @@
+using CoreBoilerplate.Infrastructure.Contexts.EFCore;
 using CoreBoilerplate.Infrastructure.Extensions;
 using CoreBoilerplate.Infrastructure.Identity;
-using CoreBoilerplate.Infrastructure.Persistence.EFContexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

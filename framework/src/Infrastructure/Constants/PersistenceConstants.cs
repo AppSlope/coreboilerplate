@@ -1,4 +1,4 @@
-﻿namespace CoreBoilerplate.Infrastructure.Persistence
+﻿namespace CoreBoilerplate.Infrastructure.Constants
 {
     public static class PersistenceConstants
     {

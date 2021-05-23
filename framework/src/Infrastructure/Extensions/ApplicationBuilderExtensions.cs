@@ -1,17 +1,23 @@
-﻿using CoreBoilerplate.Infrastructure.ErrorHandler;
+﻿using CoreBoilerplate.Infrastructure.Middlewares;
 using Microsoft.AspNetCore.Builder;
 
 namespace CoreBoilerplate.Infrastructure.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseGlobalErrorHandler(this IApplicationBuilder app)
+        public static IApplicationBuilder UseInfrastructureMiddlewares(this IApplicationBuilder app)
+        {
+            app.UseGlobalErrorHandler();
+            app.UseSwaggerDocumentation();
+            return app;
+        }
+        private static IApplicationBuilder UseGlobalErrorHandler(this IApplicationBuilder app)
         {
             app.UseMiddleware<GlobalErrorHandler>();
             return app;
         }
 
-        public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
+        private static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
         {
             app.UseSwagger();
             app.UseSwaggerUI(options =>

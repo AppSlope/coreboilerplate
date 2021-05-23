@@ -1,4 +1,5 @@
 ﻿using CoreBoilerplate.Application.Abstractions.DapperContexts;
+using CoreBoilerplate.Infrastructure.Constants;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -7,11 +8,12 @@ using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CoreBoilerplate.Infrastructure.Persistence.DapperContexts
+namespace CoreBoilerplate.Infrastructure.Contexts.Dapper
 {
     //Read details about this implmentation in the interface cs file.
-    public class DapperDbReadContext : IDapperDbReadContext
+    public class DapperDbReadContext : IDbReadContext
     {
+        #nullable enable
         private readonly IDbConnection _dbConnection;
 
         public DapperDbReadContext(IConfiguration configuration)
@@ -36,5 +38,6 @@ namespace CoreBoilerplate.Infrastructure.Persistence.DapperContexts
         {
             return await _dbConnection.QuerySingleAsync<T>(sql, param, transaction);
         }
+        #nullable disable
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoreBoilerplate.Infrastructure.Persistence.Extensions
+namespace CoreBoilerplate.Infrastructure.Extensions
 {
     public static class ModelBuilderExtensions
     {

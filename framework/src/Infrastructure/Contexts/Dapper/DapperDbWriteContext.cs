@@ -1,17 +1,18 @@
 ﻿using CoreBoilerplate.Application.Abstractions.DapperContexts;
 using CoreBoilerplate.Application.Abstractions.EFContexts;
-using CoreBoilerplate.Infrastructure.Persistence.EFContexts;
+using CoreBoilerplate.Infrastructure.Contexts.EFCore;
 using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CoreBoilerplate.Infrastructure.Persistence.DapperContexts
+namespace CoreBoilerplate.Infrastructure.Contexts.Dapper
 {
     //Read details about this implmentation in the interface cs file.
-    public class DapperDbWriteContext : IDapperDbWriteContext
+    public class DapperDbWriteContext : IDbWriteContext
     {
+        #nullable enable
         private readonly IApplicationDbContext _context;
 
         public DapperDbWriteContext(ApplicationDbContext context)
@@ -38,5 +39,6 @@ namespace CoreBoilerplate.Infrastructure.Persistence.DapperContexts
         {
             return await _context.Connection.QuerySingleAsync<T>(sql, param, transaction);
         }
+        #nullable disable
     }
 }

@@ -6,7 +6,7 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace CoreBoilerplate.Infrastructure.ErrorHandler
+namespace CoreBoilerplate.Infrastructure.Middlewares
 {
     public class GlobalErrorHandler
     {
