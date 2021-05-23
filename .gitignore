@@ -339,5 +339,4 @@ ASALocalRun/
 framework/src/API/bin/
 framework/src/API/obj/
 framework/.vs/
-
-
+framework/src/API/logs/

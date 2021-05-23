@@ -12,10 +12,12 @@ namespace CoreBoilerplate.Application.Abstractions.DapperContexts
     //We will have a seperate Dapper Context that deals only with writing to the database against the same sql connection instance that is being used by EFCore's ApplicationDbContext.
     public interface IDapperDbReadContext
     {
+#nullable enable
         Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object? param = null, IDbTransaction? transaction = null, CancellationToken cancellationToken = default);
 
         Task<T> QueryFirstOrDefaultAsync<T>(string sql, object? param = null, IDbTransaction? transaction = null, CancellationToken cancellationToken = default);
 
         Task<T> QuerySingleAsync<T>(string sql, object? param = null, IDbTransaction? transaction = null, CancellationToken cancellationToken = default);
+#nullable disable
     }
 }

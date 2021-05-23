@@ -26,6 +26,7 @@ namespace CoreBoilerplate.API
             services
                 .AddPersistenceLayerServices(_configuration)
                 .AddApplicationLayerServices()
+                .RegisterInfrastructureSettings(_configuration)
                 .AddInfrastructureLayerServices()
                 .AddRouting(options => options.LowercaseUrls = true);
         }

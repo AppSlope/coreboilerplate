@@ -11,6 +11,8 @@ namespace CoreBoilerplate.Application.Abstractions.DapperContexts
     //It will help when you start switching EFCore DB Provider from the default SQL to MYSQL or so on.
     public interface IDapperDbWriteContext : IDapperDbReadContext
     {
+#nullable enable
         Task<int> ExecuteAsync(string sql, object? param = null, IDbTransaction? transaction = null, CancellationToken cancellationToken = default);
+#nullable disable
     }
 }
