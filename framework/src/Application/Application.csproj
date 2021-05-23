@@ -14,6 +14,7 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Features\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
