@@ -26,7 +26,7 @@ namespace CoreBoilerplate.API.Controllers
             return Ok(token);
         }
 
-        [HttpPost("refresh")]
+        [HttpPost("/api/refresh-token")]
         public async Task<ActionResult> Refresh([FromBody] RefreshTokenRequest request)
         {
             var response = await _tokenService.RefreshTokenAsync(request, GenerateIPAddress());
