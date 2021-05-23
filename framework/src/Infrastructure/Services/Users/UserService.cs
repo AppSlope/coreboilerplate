@@ -21,12 +21,12 @@ namespace CoreBoilerplate.Infrastructure.Services.Users
     public class UserService : IUserService
     {
         private readonly UserManager<ExtendedIdentityUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<ExtendedIdentityRole> _roleManager;
 
         public UserService(
             UserManager<ExtendedIdentityUser> userManager,
             IMapper mapper,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<ExtendedIdentityRole> roleManager)
         {
             _userManager = userManager;
             _mapper = mapper;
@@ -70,9 +70,9 @@ namespace CoreBoilerplate.Infrastructure.Services.Users
                     {
                         var verificationUri = await SendVerificationEmail(user, origin);
                         //BackgroundJob.Enqueue(() => _mailService.SendAsync(new MailRequest() { From = "mail@codewithmukesh.com", To = user.Email, Body = $"Please confirm your account by <a href='{verificationUri}'>clicking here</a>.", Subject = "Confirm Registration" }));
-                        return Result<string>.Success(user.Id, message: $"User Registered. Please check your Mailbox to verify!");
+                        return Result<int>.Success(user.Id, message: $"User Registered. Please check your Mailbox to verify!");
                     }
-                    return Result<string>.Success(user.Id, message: $"User Registered");
+                    return Result<int>.Success(user.Id, message: $"User Registered");
                 }
                 else
                 {
@@ -91,12 +91,12 @@ namespace CoreBoilerplate.Infrastructure.Services.Users
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
             var route = "api/identity/user/confirm-email/";
             var _enpointUri = new Uri(string.Concat($"{origin}/", route));
-            var verificationUri = QueryHelpers.AddQueryString(_enpointUri.ToString(), "userId", user.Id);
+            var verificationUri = QueryHelpers.AddQueryString(_enpointUri.ToString(), "userId", user.Id.ToString());
             verificationUri = QueryHelpers.AddQueryString(verificationUri, "code", code);
             return verificationUri;
         }
 
-        public async Task<IResult<UserResponse>> GetAsync(string userId)
+        public async Task<IResult<UserResponse>> GetAsync(int userId)
         {
             var user = await _userManager.Users.Where(u => u.Id == userId).FirstOrDefaultAsync();
             var result = _mapper.Map<UserResponse>(user);
@@ -127,14 +127,14 @@ namespace CoreBoilerplate.Infrastructure.Services.Users
             return Result<UserRolesResponse>.Success(result);
         }
 
-        public async Task<IResult<string>> ConfirmEmailAsync(string userId, string code)
+        public async Task<IResult<int>> ConfirmEmailAsync(int userId, string code)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId.ToString());
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
             var result = await _userManager.ConfirmEmailAsync(user, code);
             if (result.Succeeded)
             {
-                return Result<string>.Success(user.Id, message: $"Account Confirmed for {user.Email}.You can now use the /api/identity/token endpoint to generate JWT.");
+                return Result<int>.Success(user.Id, message: $"Account Confirmed for {user.Email}.You can now use the /api/identity/token endpoint to generate JWT.");
             }
             else
             {

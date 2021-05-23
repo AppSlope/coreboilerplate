@@ -13,31 +13,31 @@ namespace CoreBoilerplate.Infrastructure.Persistence.Extensions
                 entity.ToTable(name: "Users", "Identity");
             });
 
-            builder.Entity<IdentityRole>(entity =>
+            builder.Entity<ExtendedIdentityRole>(entity =>
             {
                 entity.ToTable(name: "Roles", "Identity");
             });
-            builder.Entity<IdentityUserRole<string>>(entity =>
+            builder.Entity<IdentityUserRole<int>>(entity =>
             {
                 entity.ToTable("UserRoles", "Identity");
             });
 
-            builder.Entity<IdentityUserClaim<string>>(entity =>
+            builder.Entity<IdentityUserClaim<int>>(entity =>
             {
                 entity.ToTable("UserClaims", "Identity");
             });
 
-            builder.Entity<IdentityUserLogin<string>>(entity =>
+            builder.Entity<IdentityUserLogin<int>>(entity =>
             {
                 entity.ToTable("UserLogins", "Identity");
             });
 
-            builder.Entity<IdentityRoleClaim<string>>(entity =>
+            builder.Entity<IdentityRoleClaim<int>>(entity =>
             {
                 entity.ToTable("RoleClaims", "Identity");
             });
 
-            builder.Entity<IdentityUserToken<string>>(entity =>
+            builder.Entity<IdentityUserToken<int>>(entity =>
             {
                 entity.ToTable("UserTokens", "Identity");
             });

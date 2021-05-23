@@ -4,7 +4,7 @@ using System;
 namespace CoreBoilerplate.Infrastructure.Identity
 {
     //Map this to ApplicationUser in the Application Layer.
-    public class ExtendedIdentityUser : IdentityUser
+    public class ExtendedIdentityUser : IdentityUser<int>
     {
         public string FirstName { get; set; }
 

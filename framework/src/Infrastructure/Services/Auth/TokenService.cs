@@ -21,11 +21,11 @@ namespace CoreBoilerplate.Infrastructure.Services.Auth
     public class TokenService : ITokenService
     {
         private readonly UserManager<ExtendedIdentityUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<ExtendedIdentityRole> _roleManager;
         private readonly JWTSettings _config;
 
         public TokenService(
-            UserManager<ExtendedIdentityUser> userManager, RoleManager<IdentityRole> roleManager,
+            UserManager<ExtendedIdentityUser> userManager, RoleManager<ExtendedIdentityRole> roleManager,
             IOptions<JWTSettings> config, SignInManager<ExtendedIdentityUser> signInManager)
         {
             _userManager = userManager;
@@ -108,7 +108,7 @@ namespace CoreBoilerplate.Infrastructure.Services.Auth
             }
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.FirstName),
                 new Claim(ClaimTypes.Surname, user.LastName),

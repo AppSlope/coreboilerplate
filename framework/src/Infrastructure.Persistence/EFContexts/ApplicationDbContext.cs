@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace CoreBoilerplate.Infrastructure.Persistence.EFContexts
 {
     //Read details about this implmentation in the interface cs file.
-    public class ApplicationDbContext : IdentityDbContext<ExtendedIdentityUser, IdentityRole, string>, IApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext<ExtendedIdentityUser, ExtendedIdentityRole, int>, IApplicationDbContext
     {
         public IDbConnection Connection => Database.GetDbConnection();
 

@@ -8,7 +8,7 @@ namespace CoreBoilerplate.Application.Interfaces.Services.Users
     {
         Task<IResult> RegisterAsync(RegisterRequest request, string origin);
 
-        Task<IResult<string>> ConfirmEmailAsync(string userId, string code);
+        Task<IResult<int>> ConfirmEmailAsync(int userId, string code);
 
         Task<IResult> ForgotPasswordAsync(string emailId, string origin);
 

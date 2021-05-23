@@ -6,11 +6,11 @@ namespace CoreBoilerplate.Infrastructure.Identity.Seeds
 {
     public static class DefaultRoles
     {
-        public static async Task SeedAsync(RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAsync(RoleManager<ExtendedIdentityRole> roleManager)
         {
-            await roleManager.CreateAsync(new IdentityRole(Roles.Admininstrator.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Roles.Moderator.ToString()));
-            await roleManager.CreateAsync(new IdentityRole(Roles.Basic.ToString()));
+            await roleManager.CreateAsync(new ExtendedIdentityRole(Roles.Admininstrator.ToString()));
+            await roleManager.CreateAsync(new ExtendedIdentityRole(Roles.Moderator.ToString()));
+            await roleManager.CreateAsync(new ExtendedIdentityRole(Roles.Basic.ToString()));
         }
     }
 }

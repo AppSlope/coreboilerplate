@@ -27,7 +27,7 @@ namespace CoreBoilerplate.API.Controllers
 
         [HttpGet("confirm-email")]
         [AllowAnonymous]
-        public async Task<IActionResult> ConfirmEmailAsync([FromQuery] string userId, [FromQuery] string code)
+        public async Task<IActionResult> ConfirmEmailAsync([FromQuery] int userId, [FromQuery] string code)
         {
             return Ok(await _userService.ConfirmEmailAsync(userId, code));
         }

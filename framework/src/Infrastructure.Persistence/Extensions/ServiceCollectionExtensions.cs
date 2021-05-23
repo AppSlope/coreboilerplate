@@ -16,7 +16,7 @@ namespace CoreBoilerplate.Infrastructure.Persistence.Extensions
         public static IServiceCollection AddPersistenceLayerServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString(PersistenceConstants.DefaultConnectionName)));
-            services.AddIdentity<ExtendedIdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<ExtendedIdentityUser, ExtendedIdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>() ?? throw new DBContextNullException());
             services.AddScoped<IDapperDbWriteContext, DapperDbWriteContext>();
             services.AddScoped<IDapperDbReadContext, DapperDbReadContext>();
