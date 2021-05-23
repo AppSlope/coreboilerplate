@@ -14,9 +14,11 @@ namespace CoreBoilerplate.Infrastructure.Persistence.EFContexts
     public class ApplicationDbContext : IdentityDbContext<ExtendedIdentityUser, IdentityRole, string>, IApplicationDbContext
     {
         public IDbConnection Connection => Database.GetDbConnection();
+
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             return base.SaveChangesAsync(cancellationToken);

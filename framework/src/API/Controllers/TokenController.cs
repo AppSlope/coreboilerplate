@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CoreBoilerplate.Application.Interfaces.Services.Auth;
+using CoreBoilerplate.Application.Requests.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using CoreBoilerplate.Application.Interfaces.Services.Auth;
-using CoreBoilerplate.Application.Requests.Auth;
 
 namespace CoreBoilerplate.API.Controllers
 {

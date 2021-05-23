@@ -1,7 +1,7 @@
-﻿using System;
+﻿using CoreBoilerplate.Application.Specifications;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using CoreBoilerplate.Application.Specifications;
 
 namespace CoreBoilerplate.Application.Interfaces.Repositories
 {

@@ -1,4 +1,11 @@
 ﻿using AutoMapper;
+using CoreBoilerplate.Application.Enums;
+using CoreBoilerplate.Application.Interfaces.Services.Users;
+using CoreBoilerplate.Application.Requests.Shared;
+using CoreBoilerplate.Application.Requests.Users;
+using CoreBoilerplate.Application.Responses.Users;
+using CoreBoilerplate.Application.Wrapper;
+using CoreBoilerplate.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
@@ -8,13 +15,6 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using CoreBoilerplate.Application.Enums;
-using CoreBoilerplate.Application.Interfaces.Services.Users;
-using CoreBoilerplate.Application.Requests.Shared;
-using CoreBoilerplate.Application.Requests.Users;
-using CoreBoilerplate.Application.Responses.Users;
-using CoreBoilerplate.Application.Wrapper;
-using CoreBoilerplate.Infrastructure.Identity;
 
 namespace CoreBoilerplate.Infrastructure.Services.Users
 {

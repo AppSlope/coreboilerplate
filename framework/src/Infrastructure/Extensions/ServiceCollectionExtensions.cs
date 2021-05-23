@@ -2,15 +2,12 @@
 using CoreBoilerplate.Application.Interfaces.Services.Auth;
 using CoreBoilerplate.Application.Interfaces.Services.Users;
 using CoreBoilerplate.Application.Settings;
-using CoreBoilerplate.Infrastructure.Identity;
 using CoreBoilerplate.Infrastructure.Services.Auth;
 using CoreBoilerplate.Infrastructure.Services.Users;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-using Scrutor;
 using System;
 using System.Collections.Generic;
 
@@ -20,27 +17,27 @@ namespace CoreBoilerplate.Infrastructure.Extensions
     {
         public static IServiceCollection AddInfrastructureLayerServices(this IServiceCollection services)
         {
-            
             services.AddVersioning();
             services.AddSwaggerDocumentation();
             services.AddTransient<ITokenService, TokenService>();
             services.AddTransient<IUserService, UserService>();
             services.Scan(scan => scan
                     .FromCallingAssembly()
-                    .AddClasses(c=>c.AssignableTo(typeof(IApplicationService)))
+                    .AddClasses(c => c.AssignableTo(typeof(IApplicationService)))
                     .AsImplementedInterfaces()
                     .WithTransientLifetime());
             return services;
         }
+
         public static IServiceCollection RegisterInfrastructureSettings(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
             services.Configure<MailSettings>(configuration.GetSection("MailConfiguration"));
             return services;
         }
+
         private static IServiceCollection AddVersioning(this IServiceCollection services)
         {
-            
             return services.AddApiVersioning(config =>
             {
                 config.DefaultApiVersion = new ApiVersion(1, 0);
@@ -48,6 +45,7 @@ namespace CoreBoilerplate.Infrastructure.Extensions
                 config.ReportApiVersions = true;
             });
         }
+
         private static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
             return services.AddSwaggerGen(c =>

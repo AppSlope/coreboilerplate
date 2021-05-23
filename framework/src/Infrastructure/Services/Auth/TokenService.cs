@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CoreBoilerplate.Application.Interfaces.Services.Auth;
+using CoreBoilerplate.Application.Requests.Auth;
+using CoreBoilerplate.Application.Responses.Auth;
+using CoreBoilerplate.Application.Settings;
+using CoreBoilerplate.Application.Wrapper;
+using CoreBoilerplate.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,12 +15,6 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using CoreBoilerplate.Application.Interfaces.Services.Auth;
-using CoreBoilerplate.Application.Requests.Auth;
-using CoreBoilerplate.Application.Responses.Auth;
-using CoreBoilerplate.Application.Settings;
-using CoreBoilerplate.Application.Wrapper;
-using CoreBoilerplate.Infrastructure.Identity;
 
 namespace CoreBoilerplate.Infrastructure.Services.Auth
 {

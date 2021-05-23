@@ -63,7 +63,6 @@ namespace CoreBoilerplate.Application.Wrapper
     {
         public Result()
         {
-
         }
 
         public T Data { get; set; }

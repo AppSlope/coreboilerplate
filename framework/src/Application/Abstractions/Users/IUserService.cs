@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
-using CoreBoilerplate.Application.Abstractions.DI;
-using CoreBoilerplate.Application.Requests.Users;
+﻿using CoreBoilerplate.Application.Requests.Users;
 using CoreBoilerplate.Application.Wrapper;
+using System.Threading.Tasks;
 
 namespace CoreBoilerplate.Application.Interfaces.Services.Users
 {
-    public interface IUserService 
+    public interface IUserService
     {
         Task<IResult> RegisterAsync(RegisterRequest request, string origin);
 

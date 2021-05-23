@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using CoreBoilerplate.Application.Specifications;
+﻿using CoreBoilerplate.Application.Specifications;
 using CoreBoilerplate.Domain;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace CoreBoilerplate.Infrastructure.Repositories
 {

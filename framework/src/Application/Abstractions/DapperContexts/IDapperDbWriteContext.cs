@@ -12,7 +12,9 @@ namespace CoreBoilerplate.Application.Abstractions.DapperContexts
     public interface IDapperDbWriteContext : IDapperDbReadContext
     {
 #nullable enable
+
         Task<int> ExecuteAsync(string sql, object? param = null, IDbTransaction? transaction = null, CancellationToken cancellationToken = default);
+
 #nullable disable
     }
 }

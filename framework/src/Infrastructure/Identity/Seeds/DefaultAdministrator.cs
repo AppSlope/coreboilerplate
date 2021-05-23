@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CoreBoilerplate.Application.Constants;
+using CoreBoilerplate.Application.Enums;
+using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
-using CoreBoilerplate.Application.Constants;
-using CoreBoilerplate.Application.Enums;
 
 namespace CoreBoilerplate.Infrastructure.Identity.Seeds
 {

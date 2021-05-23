@@ -1,8 +1,7 @@
-﻿using System.Threading.Tasks;
-using CoreBoilerplate.Application.Abstractions.DI;
-using CoreBoilerplate.Application.Requests.Auth;
+﻿using CoreBoilerplate.Application.Requests.Auth;
 using CoreBoilerplate.Application.Responses.Auth;
 using CoreBoilerplate.Application.Wrapper;
+using System.Threading.Tasks;
 
 namespace CoreBoilerplate.Application.Interfaces.Services.Auth
 {

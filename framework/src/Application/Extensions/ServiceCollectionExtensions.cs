@@ -1,5 +1,4 @@
-﻿using CoreBoilerplate.Application.Settings;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace CoreBoilerplate.Application.Extensions
@@ -15,6 +14,5 @@ namespace CoreBoilerplate.Application.Extensions
 
             return services;
         }
-       
     }
 }

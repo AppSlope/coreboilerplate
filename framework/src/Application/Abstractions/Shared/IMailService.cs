@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using CoreBoilerplate.Application.Abstractions.DI;
-using CoreBoilerplate.Application.Requests.Shared;
+﻿using CoreBoilerplate.Application.Requests.Shared;
+using System.Threading.Tasks;
 
 namespace CoreBoilerplate.Application.Interfaces.Services.Shared
 {
-    public interface IMailService 
+    public interface IMailService
     {
         Task SendAsync(MailRequest request);
     }

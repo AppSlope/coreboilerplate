@@ -1,5 +1,6 @@
 ﻿using CoreBoilerplate.Infrastructure.ErrorHandler;
 using Microsoft.AspNetCore.Builder;
+
 namespace CoreBoilerplate.Infrastructure.Extensions
 {
     public static class ApplicationBuilderExtensions
@@ -9,6 +10,7 @@ namespace CoreBoilerplate.Infrastructure.Extensions
             app.UseMiddleware<GlobalErrorHandler>();
             return app;
         }
+
         public static IApplicationBuilder UseSwaggerDocumentation(this IApplicationBuilder app)
         {
             app.UseSwagger();
