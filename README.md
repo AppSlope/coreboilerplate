@@ -1,4 +1,21 @@
-﻿# coreboilerplate
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/coreboilerplate/coreboilerplate">
+    <img src="https://codewithmukesh.com/wp-content/uploads/2021/05/coreboilerplateBanner.jpg" alt="coreboilerplate">
+  </a>
+  <h3 align="center">coreboilerplate - Clean Architecture Template</h3>
+  <p align="center">
+    Open Sourced Solution Template For ASP.NET Core 5.0
+    <br />
+    <a href="https://coreboilerplate.net/"><strong>Read the Documentation »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/coreboilerplate/coreboilerplate/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/coreboilerplate/coreboilerplate/issues">Request Feature</a>
+  </p>
+</p>
 
 Note that this project is still in the design & development phase. `Expected Beta Release by June 20, 2021.`
 
