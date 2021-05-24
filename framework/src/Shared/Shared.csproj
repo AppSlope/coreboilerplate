@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>CoreBoilerplate.Shared</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Constants\NewFolder\**" />
+    <EmbeddedResource Remove="Constants\NewFolder\**" />
+    <None Remove="Constants\NewFolder\**" />
+  </ItemGroup>
+
+</Project>
